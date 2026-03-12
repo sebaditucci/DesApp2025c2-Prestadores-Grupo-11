@@ -32,7 +32,9 @@ export default function LoginPage() {
 
       console.log("Enviando payload de login:", payload);
 
-      const res = await fetch("http://localhost:3001/login", {
+      // build base URL from environment variable (fall back to VITE_API_BASE for compatibility)
+      const API_URL = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE;
+      const res = await fetch(`${API_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
