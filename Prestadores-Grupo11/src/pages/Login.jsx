@@ -91,15 +91,26 @@ export default function LoginPage() {
     }
   };
 
+  const handleGuestLogin = () => {
+    const guestUser = {
+      id: 0,
+      username: "dr aleajndro ruiz",
+      role: "medico",
+      especialidades: ["General"],
+      centro: null,
+    };
+
+    localStorage.setItem("miapp_user", JSON.stringify(guestUser));
+    toast.success(`Bienvenido/a — ${guestUser.username}`);
+    navigate("/dashboard");
+  };
+
   return (
     <Layout header={<HeaderLogin />}>
       <div className="login-page">
         <div className="d-flex justify-content-center align-items-center w-100">
           <div className="login-card text-center shadow-lg p-4 rounded">
             <h2 className="fw-bold mb-4">Bienvenidos a Medicina Integral</h2>
-            <p className="mb-3 text-muted" style={{ fontSize: "0.9rem" }}>
-              Los prestadores y sus contraseñas se pueden ver desde la consola.
-            </p>
 
             <form onSubmit={handleSubmit} noValidate>
               <div className="mb-3">
@@ -131,6 +142,17 @@ export default function LoginPage() {
                   disabled={submitting}
                 >
                   {submitting ? "Validando..." : "INGRESAR"}
+                </button>
+              </div>
+
+              <div className="d-grid mt-3">
+                <button
+                  type="button"
+                  className="btn btn-outline-primary"
+                  onClick={handleGuestLogin}
+                  disabled={submitting}
+                >
+                  LOGUEAR COMO INVITADO
                 </button>
               </div>
             </form>
