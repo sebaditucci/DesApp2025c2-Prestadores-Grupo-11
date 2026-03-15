@@ -97,6 +97,9 @@ export default function LoginPage() {
         <div className="d-flex justify-content-center align-items-center w-100">
           <div className="login-card text-center shadow-lg p-4 rounded">
             <h2 className="fw-bold mb-4">Bienvenidos a Medicina Integral</h2>
+            <p className="mb-3 text-muted" style={{ fontSize: "0.9rem" }}>
+              Los prestadores y sus contraseñas se pueden ver desde la consola.
+            </p>
 
             <form onSubmit={handleSubmit} noValidate>
               <div className="mb-3">
