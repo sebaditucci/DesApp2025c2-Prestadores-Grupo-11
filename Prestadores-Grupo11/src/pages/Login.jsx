@@ -91,18 +91,55 @@ export default function LoginPage() {
     }
   };
 
-  const handleGuestLogin = () => {
-    const guestUser = {
-      id: 0,
-      username: "dr aleajndro ruiz",
-      role: "medico",
-      especialidades: ["General"],
-      centro: null,
+  const handleGuestLogin = async () => {
+    setSubmitting(true);
+    const API_URL = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE;
+    const guestCredentials = {
+      username: "dr alejandro ruiz",
+      password: "12345",
     };
 
-    localStorage.setItem("miapp_user", JSON.stringify(guestUser));
-    toast.success(`Bienvenido/a — ${guestUser.username}`);
-    navigate("/dashboard");
+    try {
+      const res = await fetch(`${API_URL}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(guestCredentials),
+      });
+
+      const rawBody = await res.text();
+      const data = rawBody ? JSON.parse(rawBody) : {};
+
+      if (!res.ok) {
+        toast.error(data.error || data.message || "No se pudo autenticar usuario invitado.");
+        return;
+      }
+
+      if (data.message === "Acceso exitoso" && data.prestador) {
+        const { id, username, role, especialidades, centro } = data.prestador;
+        const normalizedRole = role.trim().toLowerCase();
+
+        localStorage.setItem(
+          "miapp_user",
+          JSON.stringify({
+            id,
+            username,
+            role: normalizedRole,
+            especialidades,
+            centro: centro ? centro.username : null,
+          })
+        );
+
+        toast.success(`Bienvenido/a — ${username}`);
+        navigate("/dashboard");
+      } else {
+        toast.error(data.message || "Error en el inicio de sesión invitado.");
+      }
+    } catch (err) {
+      console.error("Error en guest login:", err);
+      toast.error("No se pudo conectar con el servidor.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
