@@ -194,7 +194,7 @@ export default function Dashboard() {
           sx={{
             maxWidth: "1400px",
             margin: "0 auto",
-            padding: 4,
+            padding: { xs: 2, sm: 3, md: 4 },
             borderRadius: "20px",
             background: "linear-gradient(145deg, #ffffff, #fff8fc)",
             boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
@@ -256,7 +256,7 @@ export default function Dashboard() {
                 <Grid size={{ xs: 12, md: 4 }} key={i}>
                   <Card
                     sx={{
-                      padding: 4,
+                      padding: { xs: 2, md: 4 },
                       borderRadius: 5,
                       textAlign: "center",
                       backgroundColor: kpi.color,
@@ -281,7 +281,7 @@ export default function Dashboard() {
             <Grid size={{ xs: 12, md: 8 }}>
               <Card
                 sx={{
-                  padding: 4,
+                  padding: { xs: 2, md: 4 },
                   border: "2px solid #ff69b4",
                   borderRadius: "16px",
                   background: "linear-gradient(145deg, #ffffff, #fff5fb)",
@@ -324,7 +324,7 @@ export default function Dashboard() {
             <Grid size={{ xs: 12, md: 4 }}>
               <Card
                 sx={{
-                  padding: 4,
+                  padding: { xs: 2, md: 4 },
                   border: "2px solid #ff69b4",
                   borderRadius: "16px",
                   background: "linear-gradient(145deg, #ffffff, #fff5fb)",
@@ -341,7 +341,7 @@ export default function Dashboard() {
                       nameKey="estado"
                       cx="50%"
                       cy="50%"
-                      outerRadius={120}
+                      outerRadius="75%"
                       activeIndex={activeIndex}
                       activeShape={CustomActiveShape}
                       onMouseEnter={(_, index) => setActiveIndex(index)}

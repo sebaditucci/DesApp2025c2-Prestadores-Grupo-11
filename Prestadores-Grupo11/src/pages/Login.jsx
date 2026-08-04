@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 import HeaderLogin from "../components/HeaderLogin";
@@ -11,6 +11,11 @@ export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    const API_URL = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE;
+    fetch(`${API_URL}/ping`).catch(() => console.log("Despertando servidor..."));
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
