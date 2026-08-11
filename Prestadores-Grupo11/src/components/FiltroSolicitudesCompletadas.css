@@ -1,0 +1,8 @@
+@media (max-width: 768px) { 
+    .d-flex, .justify-content-center {
+        align-items: center;
+    }
+    .form-check, .ms-3 {
+        padding: 0;
+    }
+}

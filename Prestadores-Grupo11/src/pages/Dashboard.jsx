@@ -383,39 +383,43 @@ export default function Dashboard() {
           {/* TABLA */}
           <Card
             sx={{
-              padding: 3,
+              padding: { xs: 1, sm: 2, md: 3 },
               border: "2px solid #ff69b4",
               borderRadius: "16px",
               background: "linear-gradient(145deg, #ffffff, #fff7fc)",
+              width: "100%",
+              overflow: "hidden",
             }}
           >
-            <Typography variant="h6" mb={2}>
+            <Typography variant="h6" mb={2} px={{ xs: 1, sm: 0 }}>
               Detalle por período
             </Typography>
-            <DataGrid
-              rows={registrosFormateados}
-              columns={columns}
-              getRowId={(row) => row.id}
-              pageSizeOptions={[5, 10, 15, 20, 25, 30, 50]}
-              initialState={{ pagination: { paginationModel: { pageSize: 5 } } }}
-              autoHeight
-              sx={{
-                borderRadius: "12px",
-                backgroundColor: "#fff",
-                "& .MuiDataGrid-columnHeaders": {
-                  backgroundColor: "#ffe6f2",
-                  color: "#b30059",
-                  fontWeight: "bold",
-                  fontSize: "0.95rem",
-                },
-                "& .MuiDataGrid-row:hover": {
-                  backgroundColor: "#fff0f8",
-                },
-                "& .MuiDataGrid-cell": {
-                  borderColor: "#f7d1e6",
-                },
-              }}
-            />
+            <Box sx={{ width: "100%", overflowX: "auto" }}>
+              <DataGrid
+                rows={registrosFormateados}
+                columns={columns}
+                getRowId={(row) => row.id}
+                pageSizeOptions={[5, 10, 15, 20, 25, 30, 50]}
+                initialState={{ pagination: { paginationModel: { pageSize: 5 } } }}
+                autoHeight
+                sx={{
+                  borderRadius: "12px",
+                  backgroundColor: "#fff",
+                  "& .MuiDataGrid-columnHeaders": {
+                    backgroundColor: "#ffe6f2",
+                    color: "#b30059",
+                    fontWeight: "bold",
+                    fontSize: "0.95rem",
+                  },
+                  "& .MuiDataGrid-row:hover": {
+                    backgroundColor: "#fff0f8",
+                  },
+                  "& .MuiDataGrid-cell": {
+                    borderColor: "#f7d1e6",
+                  },
+                }}
+              />
+            </Box>
           </Card>
         </Box>
       </Container>

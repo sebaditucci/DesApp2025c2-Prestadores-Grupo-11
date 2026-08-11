@@ -1,4 +1,8 @@
 /* ======= RESET Y VARIABLES ======= */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -21,6 +25,7 @@ body {
 /* ======= ESTILO GENERAL ======= */
 .calendario-turnos-container {
   width: 100%;
+  max-width: 100vw;
   min-height: 80vh;
   margin-top: 5rem;
   color: var(--azul-petroleo);
@@ -28,6 +33,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .titulo {
@@ -242,11 +249,21 @@ body {
 
 /* ======= RESPONSIVE ======= */
 @media (max-width: 992px) {
+  .calendario-turnos-container {
+    padding: 1rem 0.5rem;
+  }
+
   .contenido-calendario {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .agenda-scroll {
     max-height: none;
+  }
+
+  .calendario-box, .agenda-box {
+    width: 100%;
+    max-width: 100%;
   }
 }

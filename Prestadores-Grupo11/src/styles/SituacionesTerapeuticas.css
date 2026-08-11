@@ -56,6 +56,22 @@ h3, h4, h5 {
   color: var(--azul-petroleo);
 }
 
+.cardSolicitudCompletada {
+  padding: 0px 16px;
+  background-color: white;
+  border: 2px solid #336785;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  flex: 1 1 40px;
+	max-width: 320px;
+	min-width: 250px;
+  height: 50px;
+  text-align: center;
+  align-items: center;
+  border-radius: 15px;
+}
+
 /* ====== BUSCADOR ====== */
 .buscador {
   display: flex;
@@ -425,7 +441,8 @@ h3, h4, h5 {
 	justify-content: center;
 	gap: 30px;
 	margin-bottom: 30px;
-	flex-wrap: wrap; /* permite que bajen de línea */
+	flex-wrap: wrap;
+  margin-top: 40px;
 }
 
 .cardSolicitud {
@@ -440,7 +457,7 @@ h3, h4, h5 {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  flex: 1 1 250px;
+  flex: 1 1 100px;
 	max-width: 320px;
 	min-width: 250px;
   /* height: 220px; */
@@ -474,23 +491,6 @@ h3, h4, h5 {
 .cardSolicitud hr {
   width: 100%;
   margin: 8px 0;
-}
-
-.cardSolicitudCompletada {
-  padding: 0px 16px;
-  background-color: white;
-  border: 2px solid #336785;
-
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  flex: 1 1 250px;
-	max-width: 320px;
-	min-width: 250px;
-  height: 50px;
-  text-align: center;
-  align-items: center;
-  border-radius: 15px;
 }
 
 .cardSolicitudCompletada h2 {
@@ -584,6 +584,7 @@ h3, h4, h5 {
 	.cardSolicitud {
 		width: 90%;
 	}
+
 }
 
 /* --- Ajustes para móviles pequeños (<= 576px) --- */

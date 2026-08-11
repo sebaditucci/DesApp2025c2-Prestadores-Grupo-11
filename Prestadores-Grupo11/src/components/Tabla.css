@@ -1,42 +1,58 @@
-.tableScroll tbody {
-  display: block;
-  max-height: 300px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.tableScroll thead,
-.tableScroll tbody tr {
-  display: table;
+.tableScroll {
   width: 100%;
-  table-layout: fixed;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 600px;
+  min-width: 0;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain; /* evita que el drag horizontal se filtre hacia el scroll de la página */
 }
 
-.tableScroll thead {
-  background-color: #f8f9fa;
+.tableScroll table {
+  width: 100%;
+  min-width: 800px; /* fuerza el scroll horizontal en mobile */
+  table-layout: fixed;
+  border-collapse: separate; /* bootstrap trae collapse, y collapse + sticky rompe bordes en Chrome/Firefox */
+  border-spacing: 0;
+}
+
+.tableScroll thead th {
   position: sticky;
   top: 0;
   z-index: 2;
+  background-color: #f8f9fa;
 }
 
-/* Todo lo de aca abajo es para customizar la barra de scroll */
-.tableScroll tbody::-webkit-scrollbar {
-  width: 10px; /* ancho del scroll */
+.tableScroll th:nth-child(1), .tableScroll td:nth-child(1) { width: 160px; } /* Fecha prevista */
+.tableScroll th:nth-child(2), .tableScroll td:nth-child(2) { width: 130px; } /* Integrante */
+.tableScroll th:nth-child(3), .tableScroll td:nth-child(3) { width: 140px; } /* Médico */
+.tableScroll th:nth-child(4), .tableScroll td:nth-child(4) { width: 120px; } /* Especialidad */
+.tableScroll th:nth-child(5), .tableScroll td:nth-child(5) { width: 90px; }  /* Estado */
+.tableScroll th:nth-child(6), .tableScroll td:nth-child(6) { width: 160px; } /* Acción */
+
+/* la barra de scroll ahora vive en .tableScroll, no en tbody */
+.tableScroll::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
 }
 
-.tableScroll tbody::-webkit-scrollbar-track {
-  background: #f5f5f5; /* fondo del track */
+.tableScroll::-webkit-scrollbar-track {
+  background: #f5f5f5;
   border-radius: 8px;
 }
 
-.tableScroll tbody::-webkit-scrollbar-thumb {
-  background-color: #b4dbdc; /* color del scroll */
+.tableScroll::-webkit-scrollbar-thumb {
+  background-color: #b4dbdc;
   border-radius: 8px;
-  border: 2px solid #f5f5f5; /* espacio entre el thumb y el track */
+  border: 2px solid #f5f5f5;
 }
 
-.tableScroll tbody::-webkit-scrollbar-thumb:hover {
-  background-color: #0077b6; /* color en hover */
-  border-color: #e0f0f1; /* leve contraste */
-  box-shadow: 0 0 4px rgba(0, 119, 182, 0.4); /* brillo sutil */
+.tableScroll::-webkit-scrollbar-thumb:hover {
+  background-color: #0077b6;
+  border-color: #e0f0f1;
+  box-shadow: 0 0 4px rgba(0, 119, 182, 0.4);
+}
+
+body {
+  overflow-x: hidden;
 }

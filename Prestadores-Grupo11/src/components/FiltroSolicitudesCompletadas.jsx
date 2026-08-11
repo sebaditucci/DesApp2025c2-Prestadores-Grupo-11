@@ -1,4 +1,5 @@
 import React from "react";
+import "./FiltroSolicitudesCompletadas.css";
 
 export default function FiltroSolicitudesCompletadas({ value, onChange }) {
   return (
