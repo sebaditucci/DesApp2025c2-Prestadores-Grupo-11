@@ -90,11 +90,15 @@ export default function BusquedaHistorialClinico() {
           <motion.div
             className="tabla-container"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }} // always visible now so we can show empty state or table
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
+            style={{ width: "100%", overflowX: "auto" }}
           >
             {resultados.length > 0 ? (
-              <table className="table table-striped">
+              <table
+                className="table table-striped"
+                style={{ width: "100%", minWidth: "400px" }}
+              >
                 <thead>
                   <tr>
                     <th>Nombre completo</th>

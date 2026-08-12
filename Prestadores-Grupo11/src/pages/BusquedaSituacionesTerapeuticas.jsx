@@ -86,7 +86,8 @@ export default function BusquedaSituacionesTerapeuticas() {
         setResultados(dedupe);
       } catch (err) {
         console.error(" Error en la búsqueda:", err);
-        if (err.response && err.response.status === 404) {
+        // The Api.js interceptor returns { status, data, message } instead of a standard Axios error
+        if (err.status === 404) {
           toast.info("No se encontró el afiliado en la base de datos.", {
             toastId: "afiliadoNoEncontrado",
           });
