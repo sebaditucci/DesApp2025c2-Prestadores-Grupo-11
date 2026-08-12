@@ -26,8 +26,12 @@ export default function BusquedaHistorialClinico() {
     }
 
     const filtrados = pacientes.filter((paciente) => {
-      const dniMatch = paciente.dni.includes(lower);
-      const nombreMatch = paciente.nombre.toLowerCase().includes(lower);
+      const dniStr = paciente.dni ? paciente.dni.toString() : "";
+      const nombreStr = paciente.nombre ? paciente.nombre.toLowerCase() : "";
+      
+      const dniMatch = dniStr.includes(lower);
+      const nombreMatch = nombreStr.includes(lower);
+      
       return dniMatch || nombreMatch;
     });
 
@@ -86,37 +90,40 @@ export default function BusquedaHistorialClinico() {
           <motion.div
             className="tabla-container"
             initial={{ opacity: 0 }}
-            animate={{ opacity: resultados.length ? 1 : 0 }} //opacity: resultados.length ? 1 : 0
+            animate={{ opacity: 1 }} // always visible now so we can show empty state or table
             transition={{ duration: 0.4 }}
           >
-
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th>Nombre completo</th>
-                  <th>DNI</th>
-                  <th>Acción</th>
-                </tr>
-              </thead>
-              <tbody>
-                {resultados.map((paciente) => (
-                  <tr key={paciente.dni}>
-                    <td>{paciente.nombre}</td>
-                    <td>{paciente.dni}</td>
-                    <td>
-                      <button
-                        className="btn-accion"
-                        onClick={() => navigate(`/prestadores/historialClinico/${paciente.dni}?tipo=${paciente.tipo}`)}
-                      >
-                        Ver historial clinico
-                      </button>
-
-                    </td>
+            {resultados.length > 0 ? (
+              <table className="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Nombre completo</th>
+                    <th>DNI</th>
+                    <th>Acción</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-
+                </thead>
+                <tbody>
+                  {resultados.map((paciente) => (
+                    <tr key={paciente.dni}>
+                      <td>{paciente.nombre}</td>
+                      <td>{paciente.dni}</td>
+                      <td>
+                        <button
+                          className="btn-accion"
+                          onClick={() => navigate(`/prestadores/historialClinico/${paciente.dni}?tipo=${paciente.tipo}`)}
+                        >
+                          Ver historial clinico
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p style={{ marginTop: "1rem", color: "#555" }}>
+                Realice una búsqueda para ver los resultados. Si no aparecen, verifique los datos ingresados.
+              </p>
+            )}
           </motion.div>
         </div>
       </PrestadoresLayout>

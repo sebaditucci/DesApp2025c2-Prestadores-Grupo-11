@@ -102,3 +102,23 @@
     height: 22px;
   }
 }
+
+/* Evita que logo, botones y gutters excedan el viewport en teléfonos. */
+@media (max-width: 576px) {
+  .custom-navbar {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .custom-navbar .container-fluid {
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important;
+  }
+
+  .logo {
+    width: clamp(130px, 48vw, 170px);
+  }
+
+  .navbar-toggler {
+    padding: 0.25rem 0.5rem;
+  }
+}

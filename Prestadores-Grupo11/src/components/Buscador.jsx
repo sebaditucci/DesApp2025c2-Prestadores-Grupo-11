@@ -41,13 +41,20 @@ export default function Buscador({
     }
 
     if (permitirDNI) {
-      if (trimmed.length < 4) {
-        toast.warning("Debe tener al menos 4 caracteres para buscar");
+      if (trimmed.length < 3) {
+        toast.warning("Debe tener al menos 3 caracteres para buscar");
         return;
       }
     } else {
-      if (trimmed.length < 8) {
-        toast.warning("Debe tener al menos 8 caracteres para buscar");
+      // Si parece nombre completo (solo letras), permitimos 3 caracteres.
+      // Si parece número de afiliado, pedimos al menos 8.
+      const pareceNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(trimmed);
+      if (pareceNombre && trimmed.length < 3) {
+        toast.warning("Debe tener al menos 3 caracteres para buscar");
+        return;
+      }
+      if (!pareceNombre && trimmed.length < 8) {
+        toast.warning("Debe tener al menos 8 caracteres para buscar afiliado");
         return;
       }
     }

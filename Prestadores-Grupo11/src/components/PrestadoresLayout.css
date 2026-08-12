@@ -15,6 +15,8 @@
   position: relative;
   min-height: 100vh;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   background-image: url("../assets/dashboard.webp");
   background-size: cover;
   background-position: center;
@@ -37,6 +39,13 @@
 .prestadores-content {
   position: relative;
   z-index: 1; /* ✅ más bajo que el sidebar */
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 100%;
   padding: 1rem;
+}
+
+/* No recortar contenido: las tablas manejan su propio scroll horizontal. */
+.prestadores-layout {
+  overflow-x: visible;
 }

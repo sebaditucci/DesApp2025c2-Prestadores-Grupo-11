@@ -1,5 +1,6 @@
 .tableScroll {
   width: 100%;
+  max-width: 100%;
   overflow-x: auto;
   overflow-y: auto;
   max-height: 600px;
@@ -51,8 +52,4 @@
   background-color: #0077b6;
   border-color: #e0f0f1;
   box-shadow: 0 0 4px rgba(0, 119, 182, 0.4);
-}
-
-body {
-  overflow-x: hidden;
 }

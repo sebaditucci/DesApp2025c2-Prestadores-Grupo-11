@@ -10,8 +10,16 @@ export const getIntegrantes = async (prestadorId, valorBusqueda) => {
     const q = (valorBusqueda || "").trim();
 
     if (!prestadorId) throw new Error("Falta el ID del prestador.");
-    if (!q || q.length < 8) {
-      throw new Error("La búsqueda requiere al menos 8 caracteres.");
+    if (!q) {
+      throw new Error("La búsqueda no puede estar vacía.");
+    }
+    
+    const pareceNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(q);
+    if (pareceNombre && q.length < 3) {
+      throw new Error("La búsqueda por nombre requiere al menos 3 caracteres.");
+    }
+    if (!pareceNombre && q.length < 8) {
+      throw new Error("La búsqueda por afiliado requiere al menos 8 caracteres.");
     }
 
     const res = await api.get(

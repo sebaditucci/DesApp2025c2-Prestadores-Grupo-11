@@ -23,7 +23,22 @@ body {
   background-color: white;
   color: var(--azul-petroleo);
   min-height: 100vh;
-  overflow-x: hidden;
+}
+
+/* Los contenedores principales deben poder encogerse en pantallas chicas.
+   El scroll horizontal queda reservado para componentes que lo necesitan,
+   como las tablas. */
+html,
+body,
+#root,
+.app-shell,
+.app-main {
+  width: 100%;
+  min-width: 0;
+}
+
+.app-main {
+  max-width: 100%;
 }
 
 /* Links */
