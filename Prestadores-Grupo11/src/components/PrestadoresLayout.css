@@ -22,7 +22,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  overflow-x: hidden; /* ✅ evita scroll lateral sin recortar el sidebar */
+  overflow-x: visible;
 }
 
 /* Overlay translúcido para mejorar legibilidad */
@@ -38,14 +38,11 @@
 /* Contenido encima del overlay */
 .prestadores-content {
   position: relative;
-  z-index: 1; /* ✅ más bajo que el sidebar */
+  z-index: 1;
   flex: 1 1 0;
   min-width: 0;
   max-width: 100%;
   padding: 1rem;
-}
-
-/* No recortar contenido: las tablas manejan su propio scroll horizontal. */
-.prestadores-layout {
-  overflow-x: visible;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }

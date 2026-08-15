@@ -333,7 +333,7 @@ export default function SituacionesTerapeuticas() {
               : "Situaciones Terapéuticas del Afiliado"}
           </h3>
 
-          <div style={{ textAlign: "right", width: "80%", margin: "0 auto" }}>
+          <div className="nueva-situacion-btn-container">
             <button
               className="btn-nueva-situacion"
               onClick={handleNuevaSituacion}
