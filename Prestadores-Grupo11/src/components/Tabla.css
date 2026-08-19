@@ -31,6 +31,19 @@
 .tableScroll th:nth-child(5), .tableScroll td:nth-child(5) { width: 90px; }  /* Estado */
 .tableScroll th:nth-child(6), .tableScroll td:nth-child(6) { width: 160px; } /* Acción */
 
+/* Override for TablaHistorial */
+.tableScroll.tabla-historial-wrapper table {
+  table-layout: auto !important;
+  min-width: 900px;
+}
+
+.tableScroll.tabla-historial-wrapper th, 
+.tableScroll.tabla-historial-wrapper td {
+  width: auto !important;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 /* la barra de scroll ahora vive en .tableScroll, no en tbody */
 .tableScroll::-webkit-scrollbar {
   width: 10px;

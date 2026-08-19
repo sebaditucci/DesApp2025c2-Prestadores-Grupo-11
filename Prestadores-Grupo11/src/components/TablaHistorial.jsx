@@ -95,7 +95,7 @@ export default function TablaHistorial({
       </div>
 
       <motion.div
-        className="tableScroll"
+        className="tableScroll tabla-historial-wrapper"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}

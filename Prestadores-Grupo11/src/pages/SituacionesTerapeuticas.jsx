@@ -11,6 +11,7 @@ import { Tooltip } from "react-tooltip";
 import Swal from "sweetalert2";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/SituacionesTerapeuticas.css";
+import "../components/Tabla.css";
 import {
   getSituacionesByAfiliadoId,
   getSituacionesByIntegranteId,
@@ -315,9 +316,8 @@ export default function SituacionesTerapeuticas() {
     <PrestadoresLayout header={<HeaderPrestadores />}>
       <div className="d-flex">
         <SideBar />
-        <div className="flex-grow-1 p-4">
+        <div className="flex-grow-1 p-2 p-md-4 w-100" style={{ minWidth: 0, maxWidth: '100vw', overflow: "hidden" }}>
           <ToastContainer />
-
           <motion.button
             className="btn-volver mb-3"
             whileHover={{ scale: 1.05 }}
@@ -342,9 +342,10 @@ export default function SituacionesTerapeuticas() {
             </button>
           </div>
 
-          <div className="table-responsive-xl mt-4">
-            <motion.table
-              className="table table-hover align-middle shadow-sm rounded text-center"
+          <div className="tabla-wrapper mt-4">
+            <div className="tableScroll">
+              <motion.table
+                className="table table-hover align-middle shadow-sm rounded text-center"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4 }}
@@ -427,6 +428,7 @@ export default function SituacionesTerapeuticas() {
                 )}
               </tbody>
             </motion.table>
+            </div>
           </div>
         </div>
       </div>

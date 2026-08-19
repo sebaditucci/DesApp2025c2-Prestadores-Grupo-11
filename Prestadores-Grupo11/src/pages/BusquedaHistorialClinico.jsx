@@ -96,7 +96,7 @@ export default function BusquedaHistorialClinico() {
           >
             {resultados.length > 0 ? (
               <table
-                className="table table-striped"
+                className="table tableScroll"
                 style={{ width: "100%", minWidth: "400px" }}
               >
                 <thead>

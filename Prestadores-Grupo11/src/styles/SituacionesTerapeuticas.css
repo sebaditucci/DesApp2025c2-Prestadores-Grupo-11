@@ -79,7 +79,6 @@ h5 {
   justify-content: flex-end;
   width: 80%;
   margin: 0 auto;
-  margin-top: 3vw;
 }
 
 /* ====== BUSCADOR ====== */
@@ -121,10 +120,25 @@ h5 {
   background: var(--azul-profundo);
 }
 
-/* ====== TABLAS ====== */
-.table {
+.tabla-wrapper {
   width: 80%;
-  margin: 3rem auto;
+  margin: 0 auto;
+}
+
+/* Sobrescribir tableScroll para esta vista de 9 columnas */
+.tabla-wrapper .tableScroll table {
+  min-width: 1000px !important; 
+  table-layout: auto !important; 
+}
+
+.tabla-wrapper .tableScroll th, 
+.tabla-wrapper .tableScroll td {
+  width: auto !important; 
+}
+
+.table {
+  width: 100%;
+  margin: 0;
   border-collapse: collapse;
   background: white;
   border-radius: 12px;
@@ -244,7 +258,7 @@ h5 {
   color: white;
   border: none;
   border-radius: 12px;
-  padding: 0.5rem;
+  padding: 0.2rem 0.5rem;
   font-weight: bold;
 }
 
@@ -405,8 +419,12 @@ h5 {
     padding: 1.2rem;
   }
 
-  .table {
+  .tabla-wrapper {
     width: 95%;
+  }
+
+  .table {
+    width: 100%;
     font-size: 0.9rem;
   }
 
@@ -553,28 +571,20 @@ h5 {
   }
 
   /* Contenedor responsive para tablas */
-  .table-responsive-xl {
+  .tabla-wrapper {
     width: 100%;
-    max-width: 100%;
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 
   .table {
     width: 100%;
-    max-width: 100%;
-    min-width: 640px;
     font-size: 0.85rem;
-    display: table;
-    overflow-x: auto;
-    margin: 0;
   }
 
   .table th,
   .table td {
-    white-space: normal;
+    white-space: nowrap;
     padding: 0.6rem;
   }
 
@@ -618,15 +628,11 @@ h5 {
 
   .table {
     font-size: 0.8rem;
-    width: 100%;
-    min-width: 640px;
-    margin: 0;
   }
 
   .table th,
   .table td {
     min-width: 50px;
-    white-space: normal;
   }
 
   .btn-volver {
@@ -636,7 +642,8 @@ h5 {
 
   .btn-nueva-situacion {
     font-size: 0.9rem;
-    width: 50%;
+    width: auto;
+    padding: 0.5rem 1rem;
   }
 
   /* Tooltip adaptado */
@@ -646,6 +653,6 @@ h5 {
 
   .nueva-situacion-btn-container {
     justify-content: center;
-    width: 70%;
+    width: 100%;
   }
 }

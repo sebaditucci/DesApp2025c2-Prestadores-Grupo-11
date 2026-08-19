@@ -115,7 +115,7 @@ export default function HistorialClinico() {
     <PrestadoresLayout header={HeaderPrestadores}>
       <div className="d-flex">
         <SideBar />
-        <div className="flex-grow-1 p-4" style={{ minWidth: 0, overflow: "hidden" }}>
+        <div className="flex-grow-1 p-2 p-md-4 w-100" style={{ minWidth: 0, maxWidth: "100vw", overflow: "hidden" }}>
           {/* Botón volver */}
           <motion.button
             className="btn-volver mb-3"
